@@ -25,10 +25,10 @@ const Navbar = ({setShowLogin}) => {
             <img src={assets.logo} alt="logo" className="logo" />
         </Link>
         <ul className="navbar-menu">
-            <Link to='/' onClick={()=>setMenu("home")} className={menu=='home'?"active":""}>Home</Link>
-            <a href='#explore-menu' onClick={()=>setMenu("menu")} className={menu=='menu'?"active":""}>Menu</a>
-            <a href='#app-download' onClick={()=>setMenu("mobile-app")} className={menu=='mobile-app'?"active":""}>Mobile-app</a>
-            <a href='#footer' onClick={()=>setMenu("contact-us")} className={menu=='contact-us'?"active":""}>contact us</a>
+            <Link to='/' onClick={()=>setMenu("home")} className={menu=='home'?"active":""}>Inicio</Link>
+            <a href='#explore-menu' onClick={()=>setMenu("menu")} className={menu=='menu'?"active":""}>Cardápio</a>
+            <a href='#app-download' onClick={()=>setMenu("mobile-app")} className={menu=='mobile-app'?"active":""}>vai sair</a>
+            <a href='#footer' onClick={()=>setMenu("contact-us")} className={menu=='contact-us'?"active":""}>Contato</a>
         </ul>
         <div className="navbar-right">
             <img src={assets.search_icon} alt="" />
@@ -36,13 +36,13 @@ const Navbar = ({setShowLogin}) => {
                <Link to='/cart'><img src={assets.basket_icon} alt="" /></Link> 
                 <div className={getTotalCartAmount() === 0 ? "":"dot"}></div>
             </div>
-            {!token ? <button onClick={()=>setShowLogin(true)}>sign in</button>
+            {!token ? <button onClick={()=>setShowLogin(true)}>Fazer Login</button>
             :<div className='navbar-profile'>
                 <img src={assets.profile_icon} alt="" />
                 <ul className='navbar-profile-dropdown'>
-                    <li onClick={()=>navigate('/myorders')}><img src={assets.bag_icon} alt="" />Orders</li>
+                    <li onClick={()=>navigate('/myorders')}><img src={assets.bag_icon} alt="" />Pedidos</li>
                     <hr/>
-                    <li onClick={logout}><img src={assets.logout_icon} alt="" />Logout</li>
+                    <li onClick={logout}><img src={assets.logout_icon} alt="" />Sair</li>
                 </ul>
             
             </div>}
