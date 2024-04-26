@@ -1,12 +1,43 @@
 .navbar{
-    padding: 20px 0px;
+    padding: 10px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;   
+    border: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #323232;
+    animation: fadeInNav ;
+    transition: all .5s ease-in-out;
 }
-.navbar .logo{
-    width: 150px;
+.special-navbar { 
+    padding: 10px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;   
+    border: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #070707;
+    animation: fadeInNav ;
+    transition: all .5s ease-in-out;
+  }
+.hidden{
+    background-color: transparent;
+    transition: all .5s ease-in-out ;
 }
+.nav-links{
+    color: white;
+}
+
+
+.navbar .logo, .special-navbar  .logo{
+    width: 50px;
+    cursor: pointer;
+}
+
 
 .navbar-menu{
     display: flex;
@@ -44,14 +75,17 @@
 .navbar li{
     cursor: pointer;
 }
-.navbar-search-icon{
+.navbar-search-icon, .navbar-profile{
     position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    padding: 10px;
 }
 .navbar-search-icon .dot{
     position: absolute;
     min-width: 10px;
     min-height: 10px;
-    background-color: tomato;
+    background-color: red;
     border-radius: 5px;
     top: -8px;
     right: -8px;

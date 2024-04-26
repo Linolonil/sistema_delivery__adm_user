@@ -1,11 +1,29 @@
 import './Navbar.css'
 import { assets } from './../../assets/assets';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
 
 // eslint-disable-next-line react/prop-types
 const Navbar = ({setShowLogin}) => {
+
+    const [show, setShow] = useState(false)
+    const controlNavbar = () => {
+        if (window.scrollY > 1 ) {
+            setShow(true)
+        }else{
+          setShow(false)
+        }
+    }
+  
+    useEffect(() => {
+        window.addEventListener('scroll', controlNavbar)
+        return () => {
+            window.removeEventListener('scroll', controlNavbar)
+        }
+    }, [])
+
+    // 
 
     const [menu, setMenu] = useState("home");
 
@@ -20,17 +38,16 @@ const Navbar = ({setShowLogin}) => {
 
 
   return (
-    <div className='navbar'>
+    <div className={`navbar ${show ? "active": "hidden"}`} >
         <Link to='/'>
-            <img src={assets.logo} alt="logo" className="logo" />
+            <img src={assets.logoMin} alt="logo" className="logo" />
         </Link>
         <ul className="navbar-menu">
-            <Link to='/' onClick={()=>setMenu("home")} className={menu=='home'?"active":""}>Inicio</Link>
-            <a href='#explore-menu' onClick={()=>setMenu("menu")} className={menu=='menu'?"active":""}>Cardápio</a>
-            <a href='#app-download' onClick={()=>setMenu("mobile-app")} className={menu=='mobile-app'?"active":""}>vai sair</a>
-            <a href='#footer' onClick={()=>setMenu("contact-us")} className={menu=='contact-us'?"active":""}>Contato</a>
+            <Link to='/' onClick={()=>setMenu("home")} className={menu=='home'?"active":""}><span className='nav-links'>Inicio</span> </Link>
+            <a href='#explore-menu' onClick={()=>setMenu("menu")} className={menu=='menu'?"active":""}><span className='nav-links'>Cardápio</span> </a>
+            <a href='#footer' onClick={()=>setMenu("contact-us")} className={menu=='contact-us'?"active":""}><span className='nav-links'>Contato</span> </a>
         </ul>
-        <div className="navbar-right">
+        <div className="navbar-right" id='nav'>
             <img src={assets.search_icon} alt="" />
             <div className="navbar-search-icon">
                <Link to='/cart'><img src={assets.basket_icon} alt="" /></Link> 
